@@ -1,0 +1,43 @@
+{ 
+  "Title": "Water Change",
+  "Description": "Replace water in the aquarium",
+  "Duration": "15m",
+  "Prerequisite" : "None",
+  "Steps":  [
+    {
+      "Title": "System Check",
+      "Operations": [
+        {
+          "Command": "ACC_SYSCHK",
+          "Error Action": "Stop",
+          "Notification": "Siren"
+        }
+      ]
+    },
+    {
+      "Title": "Exchange Water",
+      "Operations": [
+         {
+           "Command": "ACC_TODWAIT",
+           "TOD": "08:00:00",
+           "Error Action": "Continue",
+           "Notification": {
+             "Method": "Text",
+             "Number": "2624098283",
+             "Carrier": "ATT"
+           }
+	},
+        {
+          "Command": "ACC_DUMP",
+          "Valve": "Dump_Valve",
+          "Volume": "1L",
+          "FS Time": "10m",
+          "Error Action": "Stop",
+          "Notification": {
+            "Method": "Tone"
+          }
+        }
+      ]
+    }
+  ]
+}
